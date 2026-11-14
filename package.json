@@ -1,0 +1,26 @@
+{
+  "name": "devaki-clinic",
+  "version": "2.0.0",
+  "description": "Devaki Clinic and Day Care Centre - Modern Clinic Website & Real-time Appointment System",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlgoFlora/clinic-website.git"
+  },
+  "keywords": [
+    "clinic",
+    "healthcare",
+    "appointment-booking",
+    "doctor-portal",
+    "realtime",
+    "javascript"
+  ],
+  "author": "Shravani Suryawanshi",
+  "engines": {
+    "node": ">=16"
+  }
+}
