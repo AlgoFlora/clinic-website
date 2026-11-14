@@ -1,0 +1,43 @@
+/* Booking page */
+.live-note { text-align: center; font-size: .82rem; color: var(--neutral-500); margin-bottom: 24px; display: flex; justify-content: center; align-items: center; gap: 8px; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); animation: pulseDot 1.4s infinite; }
+@keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(5,150,105,.55); } 100% { box-shadow: 0 0 0 10px rgba(5,150,105,0); } }
+
+.cond-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.cond-tile {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; cursor: pointer;
+  padding: 16px 8px; border: 2px solid var(--neutral-200); border-radius: var(--radius-xl); background: #fff;
+  font: inherit; color: var(--neutral-800); transition: all .2s ease; min-height: 98px; justify-content: center;
+}
+.cond-tile:hover { border-color: var(--primary-200); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.cond-tile.selected { border-color: var(--primary); background: var(--primary-50); box-shadow: 0 0 0 3px rgba(23,105,194,.15); }
+.cond-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--primary-50); color: var(--primary); }
+.cond-tile.selected .cond-ic { background: var(--primary); color: #fff; }
+.cond-name { font-size: .85rem; font-weight: 600; line-height: 1.25; }
+
+.date-option { font: inherit; cursor: pointer; }
+.date-option.closed { opacity: .45; cursor: not-allowed; }
+.day-closed { font-size: .6rem; color: var(--danger); font-weight: 700; }
+.slot-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .75rem; color: var(--neutral-600); margin: 16px 0 4px; }
+.slot-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.slot-legend .lg { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid var(--neutral-300); display: inline-block; }
+.slot-legend .lg.booked { background: var(--neutral-200); }
+.slot-legend .lg.sel { background: var(--primary); border-color: var(--primary); }
+.slot-head { display: flex; justify-content: space-between; align-items: baseline; margin: 18px 0 10px; font-weight: 700; font-size: .92rem; color: var(--neutral-800); }
+.slot-head small { color: var(--success); font-weight: 600; }
+.time-slot { font: inherit; cursor: pointer; }
+.time-slot.booked, .time-slot.past { background: var(--neutral-100); color: var(--neutral-400); cursor: not-allowed; text-decoration: line-through; border-color: var(--neutral-200); }
+.time-slot.booked:hover, .time-slot.past:hover { background: var(--neutral-100); border-color: var(--neutral-200); }
+.no-slots { text-align: center; color: var(--neutral-500); padding: 24px 0; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.req { color: var(--danger); }
+.pay-note { font-size: .85rem; color: var(--neutral-600); background: var(--warning-light); border-radius: var(--radius-lg); padding: 10px 14px; margin-top: 14px; }
+.book-error { margin-top: 12px; padding: 10px 14px; background: var(--danger-light); color: var(--danger); border-radius: var(--radius-lg); font-weight: 600; font-size: .88rem; }
+.done-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+
+@media (max-width: 768px) {
+  .cond-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .two-col { grid-template-columns: 1fr; gap: 0; }
+  .time-slots { grid-template-columns: repeat(3, 1fr); }
+}

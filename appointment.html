@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment — Devaki Clinic</title>
+  <meta name="description" content="Book your appointment at Devaki Clinic, Wagholi. Choose your problem, pick a free time slot and confirm instantly.">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public-pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/lang-switch.css">
+  <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10" opacity="0.3"/></svg></div><div class="logo-text"><span class="logo-name">Devaki Clinic</span><span class="logo-subtitle">and Day Care Centre</span></div></a>
+      <div class="header-actions">
+        <div class="lang-switch"><button class="lang-btn active" data-lang="en">English</button><button class="lang-btn" data-lang="mr">मराठी</button></div>
+        <a href="index.html" class="btn btn-ghost" data-i18n="back_home">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="appointment-page">
+    <div class="appointment-container">
+      <h2 style="text-align:center;margin-bottom:8px;" data-i18n="appt_title">Book Your Appointment</h2>
+      <p class="live-note"><span class="live-dot"></span><span data-i18n="live_note">Live availability — booked slots are removed instantly</span></p>
+
+      <div class="progress-steps">
+        <div class="progress-step active"><div class="progress-step-number">1</div><span class="progress-step-label" data-i18n="bk_step1">Problem</span></div>
+        <div class="progress-line"></div>
+        <div class="progress-step"><div class="progress-step-number">2</div><span class="progress-step-label" data-i18n="bk_step2">Date & Time</span></div>
+        <div class="progress-line"></div>
+        <div class="progress-step"><div class="progress-step-number">3</div><span class="progress-step-label" data-i18n="bk_step3">Your Details</span></div>
+        <div class="progress-line"></div>
+        <div class="progress-step"><div class="progress-step-number">4</div><span class="progress-step-label" data-i18n="bk_step4">Confirm</span></div>
+      </div>
+
+      <div class="appointment-card">
+        <!-- Step 1: Problem -->
+        <div class="step-content active" id="step-1">
+          <h3 class="step-title" data-i18n="bk_s1_title">What is your problem?</h3>
+          <p class="step-subtitle" data-i18n="bk_s1_sub">Select what you are suffering from</p>
+          <div class="cond-grid" id="condGrid"></div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label" for="concern" data-i18n="bk_concern">Tell us more (optional)</label>
+            <textarea class="form-input" id="concern" rows="2" maxlength="500" data-i18n-placeholder="bk_concern_ph" placeholder="e.g. fever since 2 days"></textarea>
+          </div>
+          <div class="step-footer"><div></div><button class="btn btn-primary" data-next data-i18n="btn_continue">Continue →</button></div>
+        </div>
+
+        <!-- Step 2: Date & time -->
+        <div class="step-content" id="step-2">
+          <h3 class="step-title" data-i18n="bk_s2_title">Select Date & Time</h3>
+          <p class="step-subtitle" data-i18n="bk_s2_sub">Only free slots can be selected</p>
+          <h5 style="margin-bottom:12px;" data-i18n="bk_date">Select Date</h5>
+          <div class="date-picker" id="datePicker"></div>
+          <div class="slot-legend"><span><i class="lg free"></i><span data-i18n="bk_free">Available</span></span><span><i class="lg booked"></i><span data-i18n="bk_booked">Booked</span></span><span><i class="lg sel"></i><span data-i18n="bk_selected">Selected</span></span></div>
+          <div id="slotsBox"></div>
+          <div class="step-footer"><button class="btn btn-secondary" data-prev data-i18n="btn_back">← Back</button><button class="btn btn-primary" data-next data-i18n="btn_continue">Continue →</button></div>
+        </div>
+
+        <!-- Step 3: Details -->
+        <div class="step-content" id="step-3">
+          <h3 class="step-title" data-i18n="bk_s3_title">Patient Details</h3>
+          <p class="step-subtitle" data-i18n="bk_s3_sub">Name, mobile number and age are required</p>
+          <div class="two-col">
+            <div class="form-group"><label class="form-label" for="patientName"><span data-i18n="patient_name">Full Name</span> <b class="req">*</b></label><input type="text" class="form-input" id="patientName" autocomplete="name" maxlength="80"><p class="form-error"></p></div>
+            <div class="form-group"><label class="form-label" for="patientPhone"><span data-i18n="patient_phone">Mobile Number</span> <b class="req">*</b></label><input type="tel" class="form-input" id="patientPhone" inputmode="numeric" autocomplete="tel" maxlength="18" placeholder="98XXXXXXXX"><p class="form-error"></p></div>
+          </div>
+          <div class="two-col">
+            <div class="form-group"><label class="form-label" for="patientAge"><span data-i18n="patient_age">Age</span> <b class="req">*</b></label><input type="number" class="form-input" id="patientAge" min="0" max="120" inputmode="numeric"><p class="form-error"></p></div>
+            <div class="form-group"><label class="form-label" for="patientGender" data-i18n="bk_gender">Gender (optional)</label>
+              <select class="form-input" id="patientGender"><option value="" data-i18n="bk_select">Select</option><option value="Female" data-i18n="bk_female">Female</option><option value="Male" data-i18n="bk_male">Male</option><option value="Other" data-i18n="bk_gother">Other</option></select></div>
+          </div>
+          <div class="form-group"><label class="form-label" for="patientEmail" data-i18n="patient_email">Email (Optional)</label><input type="email" class="form-input" id="patientEmail" autocomplete="email"></div>
+          <div class="step-footer"><button class="btn btn-secondary" data-prev data-i18n="btn_back">← Back</button><button class="btn btn-primary" data-next data-i18n="btn_continue">Continue →</button></div>
+        </div>
+
+        <!-- Step 4: Confirm -->
+        <div class="step-content" id="step-4">
+          <h3 class="step-title" data-i18n="step_5_title">Confirm Appointment</h3>
+          <p class="step-subtitle" data-i18n="step_5_subtitle">Review and book your appointment</p>
+          <div class="confirmation-details">
+            <div class="confirmation-row"><span class="label" data-i18n="bk_problem">Problem</span><span class="value" id="rv-cond">—</span></div>
+            <div class="confirmation-row"><span class="label" data-i18n="bk_date_l">Date</span><span class="value" id="rv-date">—</span></div>
+            <div class="confirmation-row"><span class="label" data-i18n="bk_time_l">Time</span><span class="value" id="rv-time">—</span></div>
+            <div class="confirmation-row"><span class="label" data-i18n="patient_name">Name</span><span class="value" id="rv-name">—</span></div>
+            <div class="confirmation-row"><span class="label" data-i18n="patient_phone">Phone</span><span class="value" id="rv-phone">—</span></div>
+            <div class="confirmation-row"><span class="label" data-i18n="patient_age">Age</span><span class="value" id="rv-age">—</span></div>
+            <div class="confirmation-row"><span class="label" data-i18n="bk_fee">Consultation fee</span><span class="value" id="rv-fee">—</span></div>
+          </div>
+          <p class="pay-note" data-i18n="bk_pay_note">Payment is made at the clinic after your visit (cash / UPI / card).</p>
+          <div class="book-error" id="bookError" role="alert" hidden></div>
+          <div class="step-footer"><button class="btn btn-secondary" data-prev data-i18n="btn_back">← Back</button><button class="btn btn-primary" id="btnConfirm" data-i18n="btn_confirm">✓ Confirm Appointment</button></div>
+        </div>
+
+        <!-- Success -->
+        <div class="step-content" id="step-done">
+          <div class="confirmation-card">
+            <div class="confirmation-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h2 style="color:var(--success);margin-bottom:8px;" data-i18n="confirm_success">Appointment Booked!</h2>
+            <p data-i18n="confirm_msg">Your appointment has been successfully booked.</p>
+            <div class="confirmation-details" style="text-align:center;margin-top:24px;">
+              <p style="font-size:0.85rem;color:var(--neutral-500);margin-bottom:4px;" data-i18n="confirm_ref">Reference Number</p>
+              <p style="font-size:1.6rem;font-weight:800;color:var(--primary);letter-spacing:.04em;" id="doneRef">DVC-XXXX</p>
+              <p style="margin-top:8px;font-weight:600;" id="doneWhen"></p>
+              <p class="pay-note" style="margin-top:8px;" data-i18n="bk_save_ref">Please save this reference number and show it at the clinic.</p>
+            </div>
+            <div class="done-actions">
+              <a href="index.html" class="btn btn-primary btn-lg" data-i18n="confirm_done">Done →</a>
+              <a href="tel:+919467833712" class="btn btn-secondary btn-lg" data-i18n="call_label">Call Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/translations.js"></script>
+  <script src="js/translations-extra.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/appointment.js"></script>
+</body>
+</html>
