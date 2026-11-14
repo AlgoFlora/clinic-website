@@ -1,0 +1,16 @@
+DEVAKI CLINIC WEBSITE
+=====================
+
+LIVE MODE (recommended - real-time for everyone)
+  1. Install Node.js (version 16 or newer) on the computer/server that hosts the site.
+  2. In this folder run:   node server.js
+  3. Open http://localhost:3000 (patients) and http://localhost:3000/doctor-login.html (doctor)
+  Everything is shared in real time: when one patient books a slot it disappears for all other
+  patients instantly, and the booking appears on the doctor's dashboard immediately.
+  Data is saved in data/db.json (Settings -> Download backup also works).
+  Default doctor login: doctor@devaki.in / doctor123 -> change it in Settings -> Login & security.
+  To reach it from the internet, host this folder on any Node.js host (VPS, Render, Railway...).
+
+LOCAL MODE (files opened or hosted statically, no Node)
+  Everything works, but data lives only in the browser it was entered in.
+  Patients on other phones will NOT share slots with each other. Use LIVE MODE for the real clinic.
